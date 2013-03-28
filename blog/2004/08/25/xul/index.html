@@ -1,0 +1,145 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>XUL - 津波荘</title>
+	<meta name="author" content="minatsu">
+
+	
+	<meta name="description" content="PHPとMySQLで帳票はPDF出力でUIはHTML+CSS+Javascriptというシステムを作り使用しています。かれこれ1年以上これでやっているのですが、特に問題などは起きず動いています。しかし、UIがHTMLということで、使い難い部分が少なからずあったりメンテナンスが大変になったりして、 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="津波荘" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">津波荘</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:minatsu.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:minatsu.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">XUL</h2>
+	<div class="entry-content"><p><img src="/enikki/20040824.jpg" alt="photo" /></p>
+
+<p><a href="http://www.php.net/">PHP</a>と<a href="http://www.mysql.com/">MySQL</a>で帳票はPDF出力でUIはHTML+CSS+Javascriptというシステムを作り使用しています。かれこれ1年以上これでやっているのですが、特に問題などは起きず動いています。しかし、UIがHTMLということで、使い難い部分が少なからずあったりメンテナンスが大変になったりして、出来ることなら別の手を考えたいと思っていました。</p>
+
+<p>いわゆるリッチクライアントと言うことで、<a href="http://www.borland.co.jp/delphi/">Delphi</a>か<a href="http://www.microsoft.com/japan/msdn/vcsharp/default.aspx">Visual C#</a>で書いてしまうという手もあるんですが、これだとOSがWindowsに限定されてしまうし、<a href="http://java.sun.com/">Java</a>は私的にまだクライアントサイドでは使いたくないし、<a href="http://www.macromedia.com/jp/software/flash/">Flash</a>はわからないし、何か良いものはないかとあちこち見ていた今日この頃、XULが目にとまったのです。</p>
+
+<p><a href="http://www.mozilla.org/">Mozilla</a>などに使われているものという認識しかなかったのですが、<a href="http://white.sakura.ne.jp/&lt;sub>piro/&#8221;>outsider reflex</a>のPiroさんの「<a href="http://white.sakura.ne.jp/&lt;sub>piro/appendix/archives.html#presentation-xul&#8221;>XULアプリケーション開発へのいざない</a>」を読んで、コレだ！と思いました。何でもっと早く気づかなかったのか・・・。そんなことで、<a href="http://www.xulplanet.com/">XulPlanet</a>を参考に、単純な画面だけ作ってみました(image:./archives/xul.jpg,サムネイル,試しに作った画面)。</p>
+
+<p>XUL素晴らしいすぎ！勉強してみます！</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2004-08-25T08:59:00+09:00" pubdate data-updated="true">Aug 25<span>th</span>, 2004</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/migration/'>migration</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    minatsu
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>

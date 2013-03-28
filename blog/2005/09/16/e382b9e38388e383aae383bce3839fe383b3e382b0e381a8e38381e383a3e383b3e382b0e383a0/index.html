@@ -1,0 +1,162 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ストリーミングとチャングム - 津波荘</title>
+	<meta name="author" content="minatsu">
+
+	
+	<meta name="description" content="USBカメラなどを用いてリアルタイムで動画を配信するとしたらどうやればいいのか。ちょっと思ったので色々やってみました。一応、私が使用しているVAIO TR2にはMOTION EYEというカメラが付いているのでそれを使って。 まずはWindows Media エンコーダ 9。 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="津波荘" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">津波荘</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:minatsu.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:minatsu.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">ストリーミングとチャングム</h2>
+	<div class="entry-content"><p><img src="/enikki/20050915.jpg" alt="photo" /></p>
+
+<p>USBカメラなどを用いてリアルタイムで動画を配信するとしたらどうやればいいのか。ちょっと思ったので色々やってみました。一応、私が使用している<a href="http://www.vaio.sony.co.jp/Products/PCG-TR2">VAIO TR2</a>にはMOTION EYEというカメラが付いているのでそれを使って。</p>
+
+<p>まずは<a href="http://www.microsoft.com/japan/windows/windowsmedia/9series/encoder/default.aspx">Windows Media エンコーダ 9</a>。普通にこのソフトをダウンロードしてきてインストールするだけで、何の問題もなく、呆気ないほど簡単にライブ配信が出来てしまいました。サーバ等をWindowsで固めるのなら一番簡単に出来そうです。</p>
+
+<p>次は<a href="http://developer.apple.com/darwin/projects/streaming/">Darwin Streaming Server</a>、<a href="http://www.apple.com/jp/quicktime/streamingserver/">QuickTime Streaming Server</a>のオープンソース版です。私としては出来れば一つのプラットホームに縛られたくないという思いがあるので、こちらにちょっと期待。今回はWindowsのバイナリをダウンロードしてインストール。これだけで、特に設定等することなく、例えばC:Program FilesDarwin Streaming ServerMoviesに動画や音楽を置くとストリーミング配信は出来るようになります。そして、Macの場合は<a href="http://www.apple.com/jp/quicktime/broadcaster/">QuickTime Broadcaster</a>を用いることによって簡単にライブ配信出来るようになるそうなんですが、私はWindowsなのでどうしたものか・・・。色々調べてみると、<a href="http://www.videolan.org/">VLC</a>(VideoLAN)なるソフトを使うと出来るとか何とか。早速ダウンロードしてやってみると出来ました。</p>
+
+<p>&lt;&lt;</p>
+
+<p>
+vlc -vvv <strike>reset-config dshow:// </strike>no-dshow-config <strike>sout &#8220;#transcode:rtp&#8221; </strike>sout-transcode-vcodec=&#8221;mp4v&#8221; <strike>sout-transcode-vb=&#8221;192&#8221; </strike>sout-transcode-fps=&#8221;15.0&#8221; <strike>sout-transcode-acodec=&#8221;mp4a&#8221; </strike>sout-transcode-ab=&#8221;192&#8221; <strike>sout-transcode-channels=&#8221;2&#8221; </strike>sout-rtp-dst=&#8221;127.0.0.1&#8221; <strike>sout-rtp-ttl=&#8221;127&#8221; </strike>sout-rtp-sdp=&#8221;file://C:/Program Files/Darwin Streaming Server/Movies/vlc.sdp&#8221;
+</p>
+
+
+<p>例えばコマンドラインでこんな感じでvlcを起動すると、デフォルトのキャプチャデバイスからリアルタイムでMPEG-4の192kbpsでエンコードして、みたいな感じになって、後は<a href="http://www.apple.com/jp/quicktime/player/">QuickTime Player</a>で rtsp://127.0.0.1/vlc.sdp なURLを開くとライブ映像が流れます。</p>
+
+<p>Windows MediaとQuickTime、比較するとエンコードの負荷が少ないのはQuickTimeのようでした。お手軽という面で見ると、全てWindowsで固めた場合はWindows Media、全てMacで固めた場合はQuickTimeと当たり前といえば当たり前な感じ。混在させる場合は、やはりというかQuickTimeしかないかな。私としてQuickTimeが良い感じなのでコレ！</p>
+
+<p>以上、ストリーミング、ライブ配信でした。</p>
+
+<p>今日のチャングムは、今までの中で一番の見所という感じの回でした。チェ女官長は最後の最後で人の心を取り戻したんだなと、心の奥底ではずっと苦しんでいたんですね。クミョン、やはり私は好きです。あの泣き崩れていた場面や出て行くときのチャングムとのやりとり、ミン・ジョンホに言った最後の言葉など、もうクミョンです！</p>
+
+<p>もちろん、チャングムはチャングムで良かったなぁと。あの久しぶりに見せた嬉しそうな顔はとても良い感じでした。でも、ハン尚宮を思い出したりお母さんを思い出したりしてのあの場面は、涙です。</p>
+
+<p>そんなことで、今回の回はとにかく良かったです！</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2005-09-16T08:59:00+09:00" pubdate data-updated="true">Sep 16<span>th</span>, 2005</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/migration/'>migration</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2013
+
+    minatsu
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+
+
+</body>
+</html>
